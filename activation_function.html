@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Activation Function in Deep Learning</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      padding: 32px 24px 40px 24px;
+    }
+    h1 {
+      color: #3472f7;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h2 {
+      margin-top: 32px;
+      color: #405175;
+    }
+    h3 {
+      margin-top: 24px;
+      color: #488636;
+    }
+    .definition {
+      font-size: 1.13rem;
+      margin-bottom: 18px;
+    }
+    ul {
+      margin-bottom: 18px;
+    }
+    .steps {
+      padding-left: 22px;
+    }
+    .func-list {
+      padding-left: 10px;
+    }
+    .func-list li {
+      margin-bottom: 14px;
+      background: #eff3fb;
+      border-radius: 6px;
+      padding: 14px;
+      box-shadow: 0 2px 8px rgba(80, 104, 180, 0.08);
+      border-left: 4px solid #94bdfc;
+    }
+    .formula {
+      font-family: 'JetBrains Mono', 'Consolas', monospace;
+      background: #fbf0e3;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      font-size: 1.03em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: #f7faff;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 8px;
+    }
+    th {
+      background: #e5eefd;
+      color: #2857b8;
+    }
+    tr:nth-child(even) td {
+      background: #f0f5fa;
+    }
+    .example-box {
+      background: #f6fff5;
+      border: 1px solid #bee5c8;
+      border-radius: 7px;
+      padding: 18px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .summary {
+      font-size: 1.14rem;
+      margin-top: 32px;
+      background: #f8eefa;
+      border-left: 6px solid #b57fd8;
+      padding: 17px;
+      border-radius: 9px;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 10px;
+      }
+      table {
+        font-size: 0.98em;
+      }
+      th, td {
+        padding: 8px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Activation Function in Deep Learning</h1>
+
+    <div class="definition">
+      <strong>Activation function</strong> is a mathematical function applied to the output of a neuron (node) in an artificial neural network. It introduces <b>non-linearity</b>, letting neural networks learn complex features and patterns from data.
+    </div>
+
+    <h2>Why is it Needed?</h2>
+    <ul>
+      <li>Without activation functions, neural networks are just stacks of linear equations.</li>
+      <li>Real-world data is complex and nonlinear; activation functions allow networks to approximate complex functions.</li>
+    </ul>
+
+    <h2>How Does it Work?</h2>
+    <ol class="steps">
+      <li><b>Input:</b> Each neuron receives inputs, multiplies by weights, sums them up, and adds bias.</li>
+      <li><b>Activation:</b> The sum is passed through the activation function.</li>
+      <li><b>Output:</b> The result is sent to the next layer or as final output.</li>
+    </ol>
+
+    <h2>Popular Activation Functions</h2>
+    <ul class="func-list">
+      <li>
+        <strong>Sigmoid:</strong> <span class="formula">f(x) = 1 / (1 + e<sup>−x</sup>)</span><br>
+        Output: (0, 1). Used for probability prediction.
+      </li>
+      <li>
+        <strong>Tanh:</strong> <span class="formula">f(x) = tanh(x)</span><br>
+        Output: (−1, 1).
+      </li>
+      <li>
+        <strong>ReLU (Rectified Linear Unit):</strong> <span class="formula">f(x) = max(0, x)</span><br>
+        Output: [0, ∞). Very common due to speed and simplicity.
+      </li>
+      <li>
+        <strong>Leaky ReLU:</strong> <span class="formula">f(x) = max(0.01x, x)</span><br>
+        Mitigates “dying ReLU” problem.
+      </li>
+    </ul>
+
+    <h3>Example (Simplified):</h3>
+    <div class="example-box">
+      Suppose neuron receives input <b>x = 2</b>:<br><br>
+      <ul>
+        <li><b>Without activation:</b> Output = 2</li>
+        <li><b>With ReLU:</b> Output = max(0, 2) = 2</li>
+        <li><b>With Sigmoid:</b> Output = 1/(1 + exp(−2)) ≈ 0.88</li>
+      </ul>
+    </div>
+
+    <h2>Summary Table</h2>
+    <table>
+      <tr>
+        <th>Activation Function</th>
+        <th>Formula</th>
+        <th>Range</th>
+        <th>Common Use</th>
+      </tr>
+      <tr>
+        <td>Sigmoid</td>
+        <td><span class="formula">1/(1 + e<sup>−x</sup>)</span></td>
+        <td>(0, 1)</td>
+        <td>Binary classification</td>
+      </tr>
+      <tr>
+        <td>Tanh</td>
+        <td><span class="formula">tanh(x)</span></td>
+        <td>(−1, 1)</td>
+        <td>Hidden layers</td>
+      </tr>
+      <tr>
+        <td>ReLU</td>
+        <td><span class="formula">max(0, x)</span></td>
+        <td>[0, ∞)</td>
+        <td>Hidden layers (default)</td>
+      </tr>
+      <tr>
+        <td>Leaky ReLU</td>
+        <td><span class="formula">max(0.01x, x)</span></td>
+        <td>(−∞, ∞)</td>
+        <td>Avoids dying neurons</td>
+      </tr>
+    </table>
+
+    <div class="summary">
+      <span style="font-weight:bold;">In summary:</span>
+      Activation functions allow deep learning models to learn from nonlinear data by letting each layer decide what information to pass along. Their type impacts model performance and learning ability.
+    </div>
+  </div>
+</body>
+</html>
